@@ -1,0 +1,99 @@
+.ir {
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+div.photos {
+  /***** CONFIG *****/
+
+  /***** CONFIG *****/
+
+  width: 706px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 0;
+  position: relative;
+}
+div.photos a.previous,
+div.photos a.next {
+  opacity: 0;
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+  height: 44px;
+  width: 0;
+  background: url('/img/arrow-left.png') center center no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -22px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+div.photos a.next {
+  background-image: url('/img/arrow-right.png');
+  left: auto;
+  right: 0;
+}
+div.photos ul {
+  list-style: none;
+  overflow: auto;
+  padding: 0;
+  width: 726px;
+  position: relative;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+div.photos ul li {
+  width: 222px;
+  float: left;
+  display: block;
+  margin: 0 20px 0 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+div.photos ul li img {
+  width: 100%;
+  display: block;
+}
+div.photos ul li:before {
+  display: none;
+}
+div.photos.scrolling a.previous,
+div.photos.scrolling a.next {
+  width: 44px;
+  opacity: 1;
+}
+div.photos.scrolling ul {
+  left: 706px;
+}
+div.photos.scrolling ul li {
+  width: 192.66666666666666px;
+}
+div.photos.scrolling ul li:nth-child(3n+1) {
+  margin-left: 44px;
+}
+div.photos.scrolling ul li:nth-child(3n) {
+  margin-right: 44px;
+}
+div.photos.scrolling ul.stage {
+  left: 0;
+}
+div.photos.scrolling ul.left {
+  left: -706px;
+}

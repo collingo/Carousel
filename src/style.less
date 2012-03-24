@@ -1,0 +1,125 @@
+.ir { border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
+.transition-all (@time: 0.5s, @property: all, @function: ease-in-out) {
+	-webkit-transition:@property @time @function;
+	-moz-transition:@property @time @function;
+	-o-transition:@property @time @function;
+	transition:@property @time @function;
+}
+.transition-delay (@time: 0.5s) {
+	transition-delay: @time;
+	-moz-transition-delay: @time; /* Firefox 4 */
+	-webkit-transition-delay: @time; /* Safari and Chrome */
+	-o-transition-delay: @time; /* Opera */
+}
+.box-sizing(@type:border-box) {
+	-webkit-box-sizing:@type;
+	-moz-box-sizing:@type;
+	box-sizing:@type;
+}
+.link-color(@color:#000) {
+	a, a:visited {
+		color:@color;
+	}
+}
+
+* {
+	.box-sizing;
+}
+
+div.photos {
+	/***** CONFIG *****/
+		// settings
+		@photosPerRow:3;
+		// container
+		@containerWidth:706px;
+		// photos
+		@photoPadding:20px;
+		@photoWidth:(@containerWidth - ((@photosPerRow - 1 ) * @photoPadding ) ) / 3;
+		// row
+		@rowWidth:(@photoWidth + @photoPadding) * @photosPerRow;
+		// prev/next buttons
+		@buttonWidth:44px;
+		@buttonHeight:44px;
+	/***** CONFIG *****/
+
+	width:@containerWidth;
+	overflow:auto;
+	overflow-x:hidden;
+	padding:0;
+	position:relative;
+
+	a.previous, a.next {
+		opacity:0;
+		.ir;
+		height:@buttonHeight;
+		width:0;
+		background:url('/img/arrow-left.png') center center no-repeat;
+		position:absolute;
+		top:50%;
+		left:0;
+		margin-top:(@buttonHeight / 2) * -1;
+		.transition-all;
+	}
+	a.next {
+		background-image:url('/img/arrow-right.png');
+		left:auto;
+		right:0;
+	}
+	ul {
+		list-style:none;
+		overflow:auto;
+		padding:0;
+		width:@rowWidth;
+		position:relative;
+		.transition-all;
+
+		li {
+			width:@photoWidth;
+			float:left;
+			display:block;
+			margin:0 @photoPadding 0 0;
+			.transition-all;
+
+			img {
+				width:100%;
+				display:block;
+			}
+			&:before {
+				display:none;
+			}
+		}
+	}
+
+	&.scrolling {
+		// modified photo width to allow space for buttons
+		@photoWidth:(@containerWidth - ( (@photosPerRow - 1 ) * @photoPadding ) - ( 2 * @buttonWidth) ) / 3;
+
+		a.previous, a.next {
+			width:@buttonWidth;
+			opacity:1;
+		}
+		ul {
+			left:@containerWidth;
+
+			li {
+				width:@photoWidth;
+
+				// begining of row
+				&:nth-child(3n+1) {
+					margin-left:@buttonWidth;
+				}
+				// end of row
+				&:nth-child(3n) {
+					margin-right:@buttonWidth;
+				}
+			}
+
+			&.stage {
+				left:0;
+			}
+			&.left {
+				left:@containerWidth * -1;
+			}
+		}
+	}
+}
