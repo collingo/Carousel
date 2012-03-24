@@ -1,18 +1,19 @@
 require([
 	"jquery",
-	"carousel"
+	"src/js/carousel"
 ],
 function(
 	$,
 	Carousel
 ) {
 
-	describe('Carousel', function () {
+    describe('Carousel', function () {
+       var carousel = new Carousel();
 
-	  it('exists', function () {
-	    expect(Carousel).toBeDefined();
-	  });
+       it('exists', function () {
+           expect(carousel).toBeDefined();
+       });
 
-	});
-	
+    });
+
 });

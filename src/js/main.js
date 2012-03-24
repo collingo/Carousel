@@ -8,7 +8,8 @@ function(
 ) {
 
     $(function() {
-    	console.log(Carousel);
+    	var carousel = new Carousel();
+    	console.log(carousel);
     });
-    
+
 });
