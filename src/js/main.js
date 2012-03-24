@@ -8,8 +8,10 @@ function(
 ) {
 
     $(function() {
-    	var carousel = new Carousel();
-    	console.log(carousel);
+    	var carousel = new Carousel({
+    		element: $('div.photos'),
+    		debug: true
+    	});
     });
 
 });
