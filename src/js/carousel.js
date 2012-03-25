@@ -40,7 +40,15 @@ define(function() {
 	Carousel.prototype.name = "Carousel";
 
 	// class methods
-	Carousel.prototype.goto = function(page) {
+	Carousel.prototype.goto = function(_page) {
+		var page = _page;
+		if(_page < 0) {
+			page = this.items.length - 1;
+		}
+		if(_page >= this.items.length) {
+			page = 0;
+		}
+		this.current = page;
 		this.log("goto", page);
 	};
 	Carousel.prototype.next = function() {
